@@ -111,11 +111,5 @@
     "raiseIssue": true,
     "suggestEdit": true,
     "thumbsRating": true
-  },
-  "api": {
-    "baseUrl": "https://mintlify.com/api",
-    "auth": {
-      "method": "bearer"
-    }
   }
 }
