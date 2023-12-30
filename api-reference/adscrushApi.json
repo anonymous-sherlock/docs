@@ -10,16 +10,17 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://jsonplaceholder.typicode.com"
     }
   ],
   "security": [
     {
       "bearerAuth": []
     }
+    
   ],
   "paths": {
-    "/plants": {
+    "/todos": {
       "get": {
         "description": "Returns all plants from the system that the user has access to",
         "parameters": [
@@ -96,7 +97,7 @@
         }
       }
     },
-    "/plants/{id}": {
+    "/todos/{id}": {
       "delete": {
         "description": "Deletes a single plant based on the ID supplied",
         "parameters": [

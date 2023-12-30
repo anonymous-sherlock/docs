@@ -1,72 +1,104 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Adscrush",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/logo.png",
+    "light": "/logo/logo.png"
   },
-  "favicon": "/favicon.svg",
+  "backgroundImage": "/images/background.png",
+  "favicon": "/logo/logo.png",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
     "dark": "#0D9373",
+    "background": {
+      "light": "#ffffff"
+    },
     "anchors": {
       "from": "#0D9373",
       "to": "#07C983"
     }
   },
+  "modeToggle": {
+    "default": "dark"
+  },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:support@adscrush.com"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "url": "https://affilate.adscrush.com/dashboard"
   },
   "tabs": [
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+      "name": "Knowledge Base",
+      "url": "knowledge-base"
     }
   ],
   "anchors": [
     {
       "name": "Documentation",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "/"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "name": "Api Reference",
+      "icon": "rectangle-terminal",
+      "url": "api-reference"
     },
     {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "Knowledge Base",
+      "icon": "books",
+      "url": "knowledge-base"
     }
   ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "group": "Overview",
+      "pages": ["introduction", "contributing", "changelog", "roadmap"]
     },
     {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "group": "Get Started",
+      "pages": [
+        {
+          "group": "Products",
+          "pages": ["/products"]
+        },
+        {
+          "group": "Campaigns",
+          "pages": ["/campaigns"]
+        },
+        {
+          "group": "Leads",
+          "pages": ["/leads"]
+        }
+      ]
     },
+
     {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Leads endpoints",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/leads-endpoint/get",
+        "api-reference/leads-endpoint/create",
+        "api-reference/leads-endpoint/delete"
+      ]
+    },
+    {
+      "group": "Knowledge Base",
+      "pages": [
+        "knowledge-base/introduction",
+        "knowledge-base/how-do-i-fix-cors-issues"
       ]
     }
   ],
@@ -74,5 +106,16 @@
     "twitter": "https://twitter.com/mintlify",
     "github": "https://github.com/mintlify",
     "linkedin": "https://www.linkedin.com/company/mintsearch"
+  },
+  "feedback": {
+    "raiseIssue": true,
+    "suggestEdit": true,
+    "thumbsRating": true
+  },
+  "api": {
+    "baseUrl": "https://mintlify.com/api",
+    "auth": {
+      "method": "bearer"
+    }
   }
 }
