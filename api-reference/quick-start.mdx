@@ -1,0 +1,67 @@
+---
+title: "Quick Start"
+description: "Overview and API endpoint examples for Adscrush CRM API"
+---
+
+
+
+## Welcome
+
+To interact with the API, you can use the provided API specifications. All API endpoints require authentication using both `Bearer tokens` and `API_KEY`. Include your Bearer token in the `Authorization` header and your API key in the `API_KEY` header when making requests.
+
+### Base API URL
+
+The base URL for the API is `https://affilate.adscrush.com`.
+
+<CardGroup cols={2}>
+  <Card
+    title="Get Leads"
+    icon="lightbulb"
+    iconType="duotone"
+    color="#ca8b04"
+    href="leads-endpoint/get"
+  >
+    View the API specification for Get Leads
+  </Card>
+  <Card
+    title="Create Lead"
+    icon="lightbulb"
+    iconType="duotone"
+    color="#ca8b04"
+    href="leads-endpoint/create"
+  >
+    View the API specification for Create Lead
+  </Card>
+  <Card
+    title="Update Lead"
+    icon="lightbulb"
+    iconType="duotone"
+    color="#ca8b04"
+    href="leads-endpoint/update"
+  >
+    View the API specification for Update Lead
+  </Card>
+  <Card
+    title="Delete Lead"
+    icon="lightbulb"
+    iconType="duotone"
+    color="#ca8b04"
+    href="leads-endpoint/delete"
+  >
+    View the API specification for Delete Lead
+  </Card>
+
+</CardGroup>
+
+### Authentication
+
+All API endpoints require authentication using Bearer tokens and `API_KEY`. Include your Bearer token in the `Authorization` header and your API key in the `API_KEY` header when making requests.
+
+
+```json Headers
+headers = {
+    "API_KEY": "<api_key>",
+    "Authorization": "bearer <authorization_token>"
+}
+```
+

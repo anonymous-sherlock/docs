@@ -1,0 +1,417 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Adscrush CRM API",
+    "description": "API for managing leads in Adscrush CRM",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://89cb-160-202-37-39.ngrok-free.app/api"
+    }
+  ],
+  "security": [
+    {
+      "API_KEY": []
+    },
+    {
+      "BearerToken": []
+    }
+  ],
+  "paths": {
+    "/v1/order/leads": {
+      "get": {
+        "summary": "Get all leads",
+        "security": [
+          {
+            "API_KEY": [],
+            "BearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Lead"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ZodValidationError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a new pet to the store",
+        "description": "Add a new pet to the store",
+        "security": [
+          {
+            "API_KEY": [],
+            "BearerToken": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewLead"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "lead": {
+                      "$ref": "#/components/schemas/Lead"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ZodValidationError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/v1/order/leads/{id}": {
+      "get": {
+        "summary": "Get lead by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "API_KEY": [],
+            "BearerToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": "1",
+                  "ip": "192.168.1.1",
+                  "name": "John Doe",
+                  "phone": "+1234567890",
+                  "address": "123 Main Street",
+                  "state": "California",
+                  "region": "West",
+                  "country": "USA",
+                  "status": "OnHold",
+                  "createdAt": "2022-01-01T12:00:00Z",
+                  "updatedAt": "2022-01-01T12:30:00Z",
+                  "campaignId": "campaign123",
+                  "userId": "user456"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Lead not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update lead by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "API_KEY": [],
+            "BearerToken": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Lead"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Lead updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lead"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/ZodValidationError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete lead by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "API_KEY": [],
+            "BearerToken": []
+          }
+        ],
+        "responses": {
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Lead": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The unique identifier for the lead."
+          },
+          "ip": {
+            "type": "string",
+            "description": "The IP address associated with the lead."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the lead."
+          },
+          "phone": {
+            "type": "string",
+            "description": "The phone number of the lead."
+          },
+          "address": {
+            "type": "string",
+            "description": "The address of the lead."
+          },
+          "state": {
+            "type": "string",
+            "description": "The state associated with the lead."
+          },
+          "region": {
+            "type": "string",
+            "description": "The region associated with the lead."
+          },
+          "country": {
+            "type": "string",
+            "description": "The country associated with the lead."
+          },
+          "status": {
+            "type": "string",
+            "description": "The status of the lead (e.g., OnHold, InProgress).",
+            "enum": ["OnHold", "Trashed", "Paid", "Approved"]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp indicating when the lead was created."
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The timestamp indicating when the lead was last updated."
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "The identifier of the campaign associated with the lead."
+          },
+          "userId": {
+            "type": "string",
+            "description": "The identifier of the user associated with the lead."
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "phone",
+          "createdAt",
+          "updatedAt",
+          "campaignId",
+          "userId"
+        ],
+        "description": "Represents a lead in the Adscrush CRM system."
+      },
+      "NewLead": {
+        "type": "object",
+        "properties": {
+          "campaignCode": { "type": "string" },
+          "data": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name is required. The name of the lead."
+              },
+              "phone": {
+                "type": "string",
+                "description": "The phone number of the lead."
+              },
+              "address": {
+                "type": "string",
+                "description": "The address of the lead."
+              }
+            },
+            "required": ["name", "phone"]
+          }
+        },
+        "required": ["campaignCode"]
+      }
+    },
+    "securitySchemes": {
+      "API_KEY": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "API_KEY",
+        "description": "Your API key. Include this key in the `API_KEY` header when making requests to endpoints that require authentication. You can find your API key in the 'Profile' tab on the website."
+      },
+      "BearerToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "bearer",
+        "description": "Your Bearer Token. Include this token in the 'Authorization' header as `Bearer <your_token>` when making requests to endpoints that require user authentication. You can view and manage your Bearer Token in the 'Profile' tab on the website."
+      }
+    },
+    "responses": {
+      "UnauthorizedError": {
+        "description": "Unauthorized",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": { "type": "boolean", "example": false },
+                "error": { "type": "string", "example": "unauthorized" },
+                "message": {
+                  "type": "string",
+                  "example": "Authentication failed"
+                }
+              }
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": { "type": "boolean", "example": false },
+                "error": { "type": "string", "example": "error" },
+                "message": {
+                  "type": "string",
+                  "example": "An unexpected error occurred"
+                }
+              }
+            }
+          }
+        }
+      },
+      "ZodValidationError": {
+        "description": "Zod Validation Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": { "type": "boolean", "example": false },
+                "error": { "type": "string", "example": "validation" },
+                "message": { "type": "string", "example": "Invalid input data" }
+              }
+            }
+          }
+        }
+      },
+      "NotFoundError": {
+        "description": "Not Found Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": { "type": "boolean", "example": false },
+                "error": { "type": "string", "example": "Not Found" },
+                "message": { "type": "string", "example": "No lead found with this id" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
