@@ -17,7 +17,6 @@
     {
       "bearerAuth": []
     }
-    
   ],
   "paths": {
     "/todos": {
@@ -61,13 +60,13 @@
         }
       },
       "post": {
-        "description": "Creates a new plant in the store",
+        "description": "Creates a new Lead in the CRM",
         "requestBody": {
-          "description": "Plant to add to the store",
+          "description": "Lead to add to the store",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/NewLead"
               }
             }
           },
@@ -135,13 +134,20 @@
     "schemas": {
       "Plant": {
         "required": [
-          "name"
+          "campaignCode",
+
         ],
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
+          "campaignCode": {
+            "description": "Campaign code for the lead",
             "type": "string"
+          },
+          "data": {
+            "name": {
+              "description": "The name of the lead",
+              "type": "string"
+            }
           },
           "tag": {
             "description": "Tag to specify the type",
@@ -149,7 +155,7 @@
           }
         }
       },
-      "NewPlant": {
+      "NewLead": {
         "allOf": [
           {
             "$ref": "#/components/schemas/Plant"
