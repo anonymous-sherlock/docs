@@ -73,11 +73,11 @@
         },
         {
           "group": "Campaigns",
-          "pages": ["/campaigns"]
+          "pages": ["/campaigns/how-to-create-campaign"]
         },
         {
           "group": "Leads",
-          "pages": ["/leads"]
+          "pages": ["/leads/view-all-leads"]
         }
       ]
     },
