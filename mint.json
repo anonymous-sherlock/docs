@@ -69,15 +69,15 @@
       "pages": [
         {
           "group": "Products",
-          "pages": ["/products/how-to-upload-product"]
+          "pages": ["products/how-to-add-product"]
         },
         {
           "group": "Campaigns",
-          "pages": ["/campaigns/how-to-create-campaign"]
+          "pages": ["campaigns/how-to-create-campaign"]
         },
         {
           "group": "Leads",
-          "pages": ["/leads/view-all-leads"]
+          "pages": ["leads/view-all-leads"]
         }
       ]
     },
