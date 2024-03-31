@@ -90,16 +90,15 @@
       "group": "Leads endpoints",
       "pages": [
         "api-reference/leads-endpoint/get",
-        "api-reference/leads-endpoint/create",
-        "api-reference/leads-endpoint/update",
-        "api-reference/leads-endpoint/delete"
+        "api-reference/leads-endpoint/create"
       ]
     },
     {
       "group": "Knowledge Base",
       "pages": [
         "knowledge-base/introduction",
-        "knowledge-base/how-do-i-fix-cors-issues"
+        "knowledge-base/how-to-upload-products",
+        "knowledge-base/how-to-create-campaign"
       ]
     }
   ],

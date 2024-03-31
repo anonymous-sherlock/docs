@@ -57,8 +57,8 @@
         }
       },
       "post": {
-        "summary": "Add a new pet to the store",
-        "description": "Add a new pet to the store",
+        "summary": "Add a new lead to campaign",
+        "description": "Add a new lead to campaign",
         "security": [
           {
             "API_KEY": [],
@@ -94,134 +94,6 @@
           },
           "400": {
             "$ref": "#/components/responses/ZodValidationError"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      }
-    },
-    "/v1/order/leads/{id}": {
-      "get": {
-        "summary": "Get lead by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "API_KEY": [],
-            "BearerToken": []
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {
-                "example": {
-                  "id": "1",
-                  "ip": "192.168.1.1",
-                  "name": "John Doe",
-                  "phone": "+1234567890",
-                  "address": "123 Main Street",
-                  "state": "California",
-                  "region": "West",
-                  "country": "USA",
-                  "status": "OnHold",
-                  "createdAt": "2022-01-01T12:00:00Z",
-                  "updatedAt": "2022-01-01T12:30:00Z",
-                  "campaignId": "campaign123",
-                  "userId": "user456"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Lead not found"
-          }
-        }
-      },
-      "put": {
-        "summary": "Update lead by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "API_KEY": [],
-            "BearerToken": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Lead"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Lead updated successfully",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Lead"
-                }
-              }
-            }
-          },
-          "400": {
-            "$ref": "#/components/responses/ZodValidationError"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "500": {
-            "$ref": "#/components/responses/InternalServerError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete lead by ID",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "security": [
-          {
-            "API_KEY": [],
-            "BearerToken": []
-          }
-        ],
-        "responses": {
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
           },
           "401": {
             "$ref": "#/components/responses/UnauthorizedError"
@@ -294,41 +166,26 @@
             "description": "The identifier of the user associated with the lead."
           }
         },
-        "required": [
-          "id",
-          "name",
-          "phone",
-          "createdAt",
-          "updatedAt",
-          "campaignId",
-          "userId"
-        ],
+        "required": ["id", "name", "phone", "createdAt", "updatedAt", "campaignId", "userId"],
         "description": "Represents a lead in the Adscrush CRM system."
       },
       "NewLead": {
         "type": "object",
         "properties": {
           "campaignCode": { "type": "string" },
-          "data": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string",
-                "description": "Name is required. The name of the lead."
-              },
-              "phone": {
-                "type": "string",
-                "description": "The phone number of the lead."
-              },
-              "address": {
-                "type": "string",
-                "description": "The address of the lead."
-              }
-            },
-            "required": ["name", "phone"]
-          }
+          "name": { "type": "string", "description": "Name is required. The name of the lead." },
+          "phone": { "type": "string", "description": "The phone number of the lead." },
+          "address": { "type": "string", "description": "The address of the lead." },
+          "email": { "type": "string", "format": "email", "pattern": "\\.[Ii][Oo]$", "description": "Email for the lead. this field is optional" },
+          "country": { "type": "string", "description": "Country for the lead. this field is optional" },
+          "region": { "type": "string", "description": "Region for the lead. this field is optional" },
+          "city": { "type": "string", "description": "City for the lead. this field is optional" },
+          "street": { "type": "string", "description": "Street for the lead. this field is optional" },
+          "zipcode": { "type": "string", "description": "Zipcode for the lead. this field is optional" },
+          "website": { "type": "string", "description": "Website for the lead. this field is optional" },
+          "description": { "type": "string", "description": "Description for the lead. this field is optional" }
         },
-        "required": ["campaignCode"]
+        "required": ["campaignCode", "name", "phone"]
       }
     },
     "securitySchemes": {
